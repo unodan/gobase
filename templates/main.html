@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+	{{ template "head" .Head }}
+	<body class="{{.ID}} {{.Slug}}">
+		<div>
+			<header>{{ template "header" . }}</header>
+			
+			<section>{{ template "content" . }}</section>
+			
+			<footer>{{ template "footer" . }}</footer>
+		</div>
+	</body>
+</html> 

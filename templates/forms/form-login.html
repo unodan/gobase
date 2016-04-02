@@ -1,0 +1,20 @@
+{{ define "form-login" }}
+<form id="login" action="/login" method="POST">
+	<div class="title"><span>Log In</span></div>
+	<ul>
+		<li class="email"><span>User name or email</span></li>
+		<li><span class="input text"><input type="email" id="user_email" name="user_email" tabindex="1" value="{{if .Args.user_email}}{{.Args.user_email}}{{end}}"></span></li>
+		<li><span class="input checkbox"><input type="checkbox" name="persistent" value="1" tabindex="4"></span><span class="persistence">Keep me logged in.</span></li>
+	</ul>
+	<ul>
+		<li><span class="password">Password</span></li>
+		<li><span class="input text"><input type="text" id="user_password" name="user_password" tabindex="2"></span></li>
+		<li><span class="input link"><a href="." tabindex="5">Forgot your password?</a></span></li>
+	</ul>
+	<ul>
+		<li>&nbsp;</li>
+		<li class="row2"><span class="input button"><button type="submit" class="submit" name="submit" value="Log In" tabindex="3">Log In</button></span></li>
+		<li>&nbsp;</li>
+	</ul>
+</form>
+{{ end }} 
