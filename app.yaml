@@ -20,6 +20,9 @@ handlers:
 
 - url: /import
   static_dir: import
+
+- url: /export
+  static_dir: export
   
 - url: /(.*\.(gif|png|jpg))$
   static_files: static/\1
