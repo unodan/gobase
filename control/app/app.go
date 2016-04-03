@@ -113,7 +113,6 @@ func Setup(c *Cache) *cache.Store {
 	dflt := reflect.Indirect(reflect.ValueOf(&cacheData))
 	if c != nil {
 		vCache := reflect.Indirect(reflect.ValueOf(c))
-
 		for i := 0; i < dflt.NumField(); i++ {
 			if vCache.Field(i).Interface().(string) == "" {
 				ca.Set(dflt.Type().Field(i).Name, dflt.Field(i).Interface().(string))
@@ -133,6 +132,9 @@ func Setup(c *Cache) *cache.Store {
 func MakeHandler(fn func(http.ResponseWriter, *http.Request, string, *cache.Store), uri string, cs *cache.Store) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		validPath := regexp.MustCompile("^(" + uri + ")")
+
+		appName := cs.Get("Title").(string)
+		log.Println("\n\n---  " + appName + "  " + uri + "  " + strings.Repeat("-", 80-len(appName+uri)-9) + "\n")
 		if r.URL.Path == "/" {
 			fn(w, r, "/signup", cs)
 		} else if m := validPath.FindStringSubmatch(r.URL.Path); m != nil {

@@ -21,7 +21,8 @@ func init() {
 		appID   = "mwa"
 		appName = "My Web Application"
 	)
-	log.Println("\n\n---  " + appName + "  " + strings.Repeat("-", 80-len(appName)-7) + "\n")
+	uri := "/"
+	log.Println("\n\n---  " + appName + "  " + uri + "  " + strings.Repeat("-", 80-len(appName+uri)-9) + "\n")
 	log.Println("init, Info: application [ " + appName + " ] has started")
 
 	r := mux.NewRouter()
