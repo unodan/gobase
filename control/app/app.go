@@ -6,7 +6,6 @@
 package app
 
 import (
-	"fmt"
 	"html/template"
 	"log"
 	"net/http"
@@ -116,14 +115,10 @@ func Setup(c *Cache) *cache.Store {
 		vCache := reflect.Indirect(reflect.ValueOf(c))
 
 		for i := 0; i < dflt.NumField(); i++ {
-			switch fmt.Sprintf("%T", vCache.Field(i).Interface()) {
-			case "string":
-				if vCache.Field(i).Interface().(string) == "" {
-					ca.Set(dflt.Type().Field(i).Name, dflt.Field(i).Interface().(string))
-				} else {
-					ca.Set(vCache.Type().Field(i).Name, vCache.Field(i).Interface().(string))
-				}
-				break
+			if vCache.Field(i).Interface().(string) == "" {
+				ca.Set(dflt.Type().Field(i).Name, dflt.Field(i).Interface().(string))
+			} else {
+				ca.Set(vCache.Type().Field(i).Name, vCache.Field(i).Interface().(string))
 			}
 		}
 	}
