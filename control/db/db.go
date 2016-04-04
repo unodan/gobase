@@ -9,4 +9,4 @@ import (
 	"database/sql"
 )
 
-var con *sql.DB
+var hdl *sql.DB

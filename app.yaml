@@ -5,28 +5,5 @@ api_version: go1
 
 
 handlers:
-- url: /images
-  static_dir: images
-
-- url: /favicon.ico
-  static_files: images/favicon.ico
-  upload: images/favicon.ico
-
-- url: /javascript
-  static_dir: javascript
-
-- url: /stylesheets
-  static_dir: stylesheets
-
-- url: /import
-  static_dir: import
-
-- url: /export
-  static_dir: export
-  
-- url: /(.*\.(gif|png|jpg))$
-  static_files: static/\1
-  upload: static/.*\.(gif|png|jpg)$
-
 - url: /.*
   script: _go_app
