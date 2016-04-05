@@ -1,3 +1,3 @@
-# An advanced web application template framework for go (golang)
+# Basic CMS web application, starter framework for go (golang)
 =======
-Gobase is web application template framework for go (golang). You can use it as a starting point for creating your own web applications. 
+You can use gobase.go as a starting point for creating your own custom CMS web applications. 
