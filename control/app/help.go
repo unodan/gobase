@@ -6,7 +6,7 @@ import (
 	"github.com/unodan/cache"
 )
 
-func Help(w http.ResponseWriter, r *http.Request, uri string, ap *cache.Store) {
+func Help(w http.ResponseWriter, r *http.Request, uri string, ca *cache.Store) {
 	var (
 		args = map[string]string{
 			"Title":   "The requested URL cannot be found.",
@@ -14,7 +14,7 @@ func Help(w http.ResponseWriter, r *http.Request, uri string, ap *cache.Store) {
 		}
 	)
 	Templates["help"].ExecuteTemplate(w, "help.html", &Page{
-		ID:      ap.Get("ID").(string),
+		ID:      ca.Get("ID").(string),
 		User:    nil,
 		Slug:    Slug(uri),
 		Title:   "HelpPage",

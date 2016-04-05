@@ -100,6 +100,7 @@ func Setup(c *Cache) *cache.Store {
 		path, _ = os.Getwd()
 		ca      = cStore.New()
 	)
+
 	cacheData := Cache{
 		ID:       "",
 		Title:    "",
@@ -114,14 +115,13 @@ func Setup(c *Cache) *cache.Store {
 	if c != nil {
 		vCache := reflect.Indirect(reflect.ValueOf(c))
 		for i := 0; i < dflt.NumField(); i++ {
-			if vCache.Field(i).Interface().(string) == "" {
-				ca.Set(dflt.Type().Field(i).Name, dflt.Field(i).Interface().(string))
+			if vCache.Field(i).Interface() == nil || vCache.Field(i).Interface() == "" {
+				ca.Set(dflt.Type().Field(i).Name, dflt.Field(i).Interface())
 			} else {
-				ca.Set(vCache.Type().Field(i).Name, vCache.Field(i).Interface().(string))
+				ca.Set(vCache.Type().Field(i).Name, vCache.Field(i).Interface())
 			}
 		}
 	}
-
 	if err = LoadTemplates(); err != nil {
 		log.Println("app, Error: application [ " + ca.Get("Title").(string) + " ] has failed to initialize, program aborted")
 		log.Println("app,", err)
@@ -133,8 +133,14 @@ func MakeHandler(fn func(http.ResponseWriter, *http.Request, string, *cache.Stor
 	return func(w http.ResponseWriter, r *http.Request) {
 		validPath := regexp.MustCompile("^(" + uri + ")")
 
+		url, err := r.URL.Parse(r.URL.Path)
+		if err != nil {
+			os.Exit(Bail(255))
+		}
+
 		appName := cs.Get("Title").(string)
-		log.Println("\n\n---  " + appName + "  " + uri + "  " + strings.Repeat("-", 80-len(appName+uri)-9) + "\n")
+		log.Printf("\n\n---  %s  %s  %s", appName, url.Path, strings.Repeat("-", 80-len(appName+url.Path)-9))
+
 		if r.URL.Path == "/" {
 			fn(w, r, "/signup", cs)
 		} else if m := validPath.FindStringSubmatch(r.URL.Path); m != nil {

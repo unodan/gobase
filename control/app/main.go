@@ -6,12 +6,12 @@ import (
 	"github.com/unodan/cache"
 )
 
-func Main(w http.ResponseWriter, r *http.Request, uri string, ap *cache.Store) {
+func Main(w http.ResponseWriter, r *http.Request, uri string, ca *cache.Store) {
 	var (
 		args = map[string]string{}
 	)
 	Templates["main"].ExecuteTemplate(w, "main.html", &Page{
-		ID:      ap.Get("ID").(string),
+		ID:      ca.Get("ID").(string),
 		User:    nil,
 		Slug:    Slug(uri),
 		Title:   "MainPage",

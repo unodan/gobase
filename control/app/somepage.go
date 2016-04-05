@@ -6,12 +6,12 @@ import (
 	"github.com/unodan/cache"
 )
 
-func Somepage(w http.ResponseWriter, r *http.Request, uri string, ap *cache.Store) {
+func Somepage(w http.ResponseWriter, r *http.Request, uri string, ca *cache.Store) {
 	var (
 		args = map[string]string{}
 	)
 	Templates["somepage"].ExecuteTemplate(w, "somepage.html", &Page{
-		ID:      ap.Get("ID").(string),
+		ID:      ca.Get("ID").(string),
 		User:    nil,
 		Slug:    Slug(uri),
 		Title:   "SomePage",
