@@ -4,3 +4,72 @@
 # Date: 20160401
 */
 
+.mwa {
+	font-family:Tahoma, Geneva, sans-serif;
+}
+.mwa p {
+	padding:1.25em 0 0 0;
+}
+.mwa h1 {
+	font-size:2em;
+	font-weight:700;
+}
+.mwa header {
+	color:#FFF;
+	background:#378EFF;
+}
+.mwa header>ul,
+.mwa footer>ul{
+	display:table;
+	width:100%;
+}
+.mwa section>nav>ul>li {
+	padding:0 0 0 1em;
+}
+.mwa header .logo,
+.mwa footer .side {
+	display:table-cell;
+	width:150px;
+	height:3em;
+	vertical-align:Middle;
+}
+.mwa header .logo a {
+	display:block;
+	padding:0 0 0 1em;
+	color:#FFF;
+	text-decoration:none;
+}
+.mwa header .body,
+.mwa footer .body{
+	display:table-cell;
+	height:3em;
+	vertical-align:Middle;
+}
+.mwa nav {
+	display:table-cell;
+	min-width:150px;
+	background:#378EFF;
+}
+.mwa nav a {
+	display:block;
+	color:#FFF;
+	line-height:2em;
+	text-decoration:none;
+}
+.mwa nav>ul>li:hover {
+	background:#205294; 
+}
+.mwa section>.content {
+	display:table-cell;
+	padding:1em; 
+	
+}
+.mwa section {
+	background:#FFF;
+}
+.mwa footer {
+	clear:both;
+	color:#FFF;
+	background:#378EFF;
+}
+

@@ -55,7 +55,7 @@ func init() {
 		log.Println("init, Info: application [ " + ca.Get("Title").(string) + " ] has initialized successfully")
 		log.Println("init, Info: server [ " + ca.Get("HostName").(string) + " ], waiting for requests on port [ " + ca.Get("HostPort").(string) + " ]")
 	}(map[string]func(http.ResponseWriter, *http.Request, string, *cache.Store){
-		"/":         app.Main,
+		"/":         app.Home,
 		"/somepage": app.Somepage,
 	})
 }

@@ -1,5 +1,6 @@
 {{ define "content" }}
 <div class="content">
-	<div>PAGE = {{ .Title }}</div>
+	<h1>{{ .Args.Title }}</h1>
+	<div><p>{{ .Args.Message }}</p></div>
 </div>
 {{ end }} 

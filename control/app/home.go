@@ -6,14 +6,14 @@ import (
 	"github.com/unodan/cache"
 )
 
-func Help(w http.ResponseWriter, r *http.Request, uri string, ca *cache.Store) {
+func Home(w http.ResponseWriter, r *http.Request, uri string, ca *cache.Store) {
 	var (
-		title    = "Help Page"
+		title    = "Home Page"
 		template = "index"
 
 		args = map[string]string{
-			"Title":   "Help Page Title.",
-			"Message": "This is the content area for the help page.",
+			"Title":   "Home Page Title",
+			"Message": "This is the content area for the home page.",
 		}
 
 		page = &Page{
@@ -23,7 +23,7 @@ func Help(w http.ResponseWriter, r *http.Request, uri string, ca *cache.Store) {
 			Title:   title,
 			Head:    &Head{title, "http", "localhost", "8080", uri},
 			Header:  nil,
-			Sidenav: &[]Sidenav{{"/", "Home Page"}, {"/somepage", "Some Page"}},
+			Sidenav: &[]Sidenav{{"/help", "Help Page"}, {"/somepage", "Some Page"}},
 			Content: nil,
 			Sidebar: nil,
 			Footer:  &Footer{"Footer"},

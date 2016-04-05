@@ -1,0 +1,13 @@
+{{ define "sidenav" }}
+	<nav>
+		<ul>
+			{{ range .Sidenav }}
+			<li>
+				<span>
+					<a href="{{.Url}}">{{ .Text }}</a>
+				</span>
+			</li>
+			{{ end }}
+		</ul>
+	</nav>
+{{ end }}

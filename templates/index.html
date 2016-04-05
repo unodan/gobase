@@ -5,7 +5,10 @@
 		<div>
 			<header>{{ template "header" . }}</header>
 			
-			<section>{{ template "content" . }}</section>
+			<section>
+			{{ if .Sidenav }}{{ template "sidenav" . }}{{ end }}
+			{{ template "content" . }}
+			</section>
 			
 			<footer>{{ template "footer" . }}</footer>
 		</div>
